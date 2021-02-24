@@ -8,6 +8,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', UserController.index);
 router.get('/:id', UserController.get)
+router.put('/:id')
 
 
 module.exports = router;

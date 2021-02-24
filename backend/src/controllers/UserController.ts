@@ -13,4 +13,6 @@ export default {
         }
         res.json(user)
     },
+    update: async (req: Request, res: Response) => { },
+    delete: async (req: Request, res: Response) => { },
 }
