@@ -1,13 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import createError from 'http-errors'
+import express from 'express'
+import path from 'path'
+import cookieParser from 'cookie-parser'
+import logger from 'morgan'
 
-var usersRouter = require('./routes/users');
-require('./config/database')
+import usersRouter from './routes/users'
+import mongoose from 'mongoose'
+// require('./config/database')
 
 var app = express();
+
+
+/**Connect to database mongodb */
+mongoose.connect()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/users', usersRouter);
 app.use('/team', require('./routes/team'));
