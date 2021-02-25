@@ -1,5 +1,5 @@
 import express from 'express'
-import controller from '../controllers/teamController'
+import controller from '../controllers/deparmentController'
 import JWTMiddleware from '../middleware/jwt'
 
 const router = express.Router()

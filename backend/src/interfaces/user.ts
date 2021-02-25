@@ -1,10 +1,10 @@
 
-import { Document } from 'mongoose'
+import { Document, Types } from 'mongoose'
 export interface IUser extends Document {
-    last_name: string,
-    first_name: string,
-    user_type: {
-        type: string,
-        enum: ['director', 'leader', 'staff']
-    }
+    lastName: string,
+    firstName: string,
+    team: Types.ObjectId,
+    userType: string,
+    username: string,
+    password: string
 }

@@ -1,0 +1,32 @@
+@collection=department
+
+###
+GET {{host}}/{{collection}}
+
+###
+GET {{host}}/{{collection}}/6037e06cdad2ba45a4d20cf1
+###
+
+
+POST {{host}}/{{collection}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "name": "phong hành chính",
+    "manager": "6037cb7598ce504e8cc73b2c"
+}
+
+###
+PUT {{host}}/{{collection}}/6037d14688aae114cc6a7062
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "people": ["6037c5e8c441ca397c2f8837"]
+}
+
+
+###
+DELETE {{host}}/{{collection}}/6037e05adad2ba45a4d20cef
+Authorization: Bearer {{accessToken}}

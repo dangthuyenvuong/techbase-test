@@ -4,15 +4,24 @@ import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 
-import usersRouter from './routes/users'
-import mongoose from 'mongoose'
+import mongoose, { mongo } from 'mongoose'
+import config from './config/database'
+import logging from './config/logging'
 // require('./config/database')
 
+
 var app = express();
+const NAMESPACE = 'Server';
 
 
 /**Connect to database mongodb */
-mongoose.connect()
+mongoose.connect(config.mongo.url, config.mongo.options)
+  .then(result => {
+    logging.info(NAMESPACE, 'Connected to mongoDB!')
+  })
+  .catch(error => {
+    logging.error(NAMESPACE, error.message, error)
+  })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,8 +35,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-app.use('/users', usersRouter);
+app.use('/user', require('./routes/user'));
 app.use('/team', require('./routes/team'));
+app.use('/department', require('./routes/department'));
+app.use('/', require('./routes/admin'));
 
 // catch 404 and forward to error handler
 app.use(function (req: any, res: any, next: any) {
@@ -45,4 +56,4 @@ app.use(function (err: any, req: any, res: any, next: any) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

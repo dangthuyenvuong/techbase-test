@@ -2,11 +2,14 @@
 /**
  * Module dependencies.
  */
-var app = require('../app');
-var debug = require('debug')('myapp:server');
-var http = require('http');
+import app from '../app'
+// import debug from 'debug'
+import http from 'http'
+import dotenv from 'dotenv'
 
-require('dotenv').config()
+dotenv.config()
+
+// debug('myapp:server')
 /**
  * Get port from environment and store in Express.
  */
@@ -65,11 +68,11 @@ function onError(error: any) {
  * Event listener for HTTP server "listening" event.
  */
 function onListening() {
-    var addr = server.address();
-    var bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+    // var addr = server.address();
+    // var bind = typeof addr === 'string'
+    //     ? 'pipe ' + addr
+    //     : 'port ' + addr.port;
+    // debug('Listening on ' + bind);
 
     console.log(`Server listen on port ${process.env.PORT}`)
 }

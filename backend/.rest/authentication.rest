@@ -1,0 +1,27 @@
+
+POST {{host}}/register
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password@"
+}
+####
+
+POST {{host}}/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password@"
+}
+
+####
+
+POST {{host}}/refresh-token
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password@"
+}

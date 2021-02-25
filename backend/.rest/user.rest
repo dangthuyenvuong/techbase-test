@@ -1,0 +1,40 @@
+@collection=user
+
+
+######### 
+GET {{host}}/{{collection}}
+
+
+
+######### 
+GET {{host}}/{{collection}}/6037d17a88aae114cc6a7064
+
+###
+
+
+POST {{host}}/{{collection}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "lastName": "Vuong",
+    "firstName": "Dang",
+    "team": "6037c5e2c441ca397c2f8835",
+    "userType": "staff"
+}
+
+###
+PUT {{host}}/{{collection}}/6037cc792ab6a74688cdf9b6
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "lastName": "Vuong",
+    "firstName": "Dang",
+    "userType": "staff"
+}
+
+
+###
+DELETE {{host}}/{{collection}}/6037cb36701bd745a4c906fd
+Authorization: Bearer {{accessToken}}

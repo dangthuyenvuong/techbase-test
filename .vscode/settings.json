@@ -1,0 +1,10 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "host": "http://localhost:5000",
+            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJUeXBlIjoiZ3Vlc3QiLCJfaWQiOiI2MDM4MDI4OGRlZjhhMDM0Mjg0MzE1MTkiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIzMjFmMzlkNmE2OWFkNjg1MzQ0MTdkNDIwNWI3ZjUyYyIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMjVUMjA6MDM6MjAuMjExWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMjVUMjA6MDM6MjAuMjExWiIsIl9fdiI6MCwiaWQiOiI2MDM4MDI4OGRlZjhhMDM0Mjg0MzE1MTkifSwiaWF0IjoxNjE0Mjg0NDQ5LCJleHAiOjE2MTQyODgwNDl9.7VOEqyT0tQ22lnFz4PKwPaXh4YXUuzFYu17GEtDnBn8",
+            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJUeXBlIjoiZ3Vlc3QiLCJfaWQiOiI2MDM4MDI4OGRlZjhhMDM0Mjg0MzE1MTkiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIzMjFmMzlkNmE2OWFkNjg1MzQ0MTdkNDIwNWI3ZjUyYyIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMjVUMjA6MDM6MjAuMjExWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMjVUMjA6MDM6MjAuMjExWiIsIl9fdiI6MCwiaWQiOiI2MDM4MDI4OGRlZjhhMDM0Mjg0MzE1MTkifSwiaWF0IjoxNjE0Mjg0NDQ5fQ.6hDXZDH0vPpKmjR6BZri0qpNc9DIT6Bz7SiGiLI1hB4"
+        }
+    }
+}

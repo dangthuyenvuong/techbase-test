@@ -1,16 +1,17 @@
-import mongoose, { Schema, Types } from 'mongoose'
-import IDeparment from '../interfaces/deparment';
+import mongoose, { Schema } from 'mongoose'
+import IDeparment from '../interfaces/department';
 
 
 const DeparmentSchema: Schema = new Schema({
     name: String,
     manager: {
-        type: Types.ObjectId,
-        ref: 'User'
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
     people: [
         {
-            type: Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'User'
         }
     ]
@@ -19,4 +20,4 @@ const DeparmentSchema: Schema = new Schema({
 })
 
 
-export default mongoose.model<IDeparment>('Deparment', DeparmentSchema)
+export default mongoose.model<IDeparment>('Department', DeparmentSchema)
