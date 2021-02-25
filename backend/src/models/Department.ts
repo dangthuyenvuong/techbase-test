@@ -1,17 +1,22 @@
-import mongoose from "../config/database";
+import mongoose, { Schema, Types } from 'mongoose'
+import IDeparment from '../interfaces/deparment';
 
-const User = mongoose.model('Deparment', {
+
+const DeparmentSchema: Schema = new Schema({
     name: String,
     manager: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Types.ObjectId,
         ref: 'User'
     },
     people: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Types.ObjectId,
             ref: 'User'
         }
     ]
+}, {
+    timestamps: true
 })
 
-export default User;
+
+export default mongoose.model<IDeparment>('Deparment', DeparmentSchema)

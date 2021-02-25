@@ -11,4 +11,4 @@ router.get('/:id', UserController.get)
 router.put('/:id')
 
 
-module.exports = router;
+export default router;

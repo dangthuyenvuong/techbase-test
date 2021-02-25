@@ -1,12 +1,10 @@
-const mongoose = require('mongoose')
-const config = {
-    "DATABASE": "techbase-test",
-    "USERNAME": "techbase-test",
-    "PASSWORD": "techbase-test",
-    // "stringConnect": "mongodb://localhost:27017"
+const MONGO_OPTIONS = {
+
 }
 
-let stringconnect = `mongodb+srv://${config.USERNAME}:${config.PASSWORD}@cluster0.ticyv.mongodb.net/${config.DATABASE}`
 
-mongoose.connect(stringconnect, { useNewUrlParser: true, useUnifiedTopology: true })
-export default mongoose
+
+// let stringconnect = `mongodb://${config.USERNAME}:${config.PASSWORD}@localhost:27017/${config.DATABASE}`
+
+// mongoose.connect(stringconnect, { useNewUrlParser: true, useUnifiedTopology: true })
+// export default mongoose
