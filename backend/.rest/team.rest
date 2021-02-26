@@ -16,8 +16,8 @@ Authorization: Bearer {{accessToken}}
 
 {
     "name": "demo",
-    "department": "6037e06cdad2ba45a4d20cf1",
-    "manager": "6037cb7598ce504e8cc73b2c"
+    "department": "6038b8e500826737e840f05f",
+    "manager": "6038b93900826737e840f061"
 }
 
 ###

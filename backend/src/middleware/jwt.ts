@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express"
 import jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
-import User from '../models/user'
+import Admin from '../models/admin'
 
 const TOKEN_EXPIRED = process.env.TOKEN_EXPIRED || '3600'
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || 'refreshToken'
@@ -15,7 +15,6 @@ function cacheError(err: any, res: Response) {
         return res.status(403).json({ error: 1, error_code: 'TOKEN_INVALID', message: 'Token Invalid' });
     }
 
-    console.log(err)
     return res.sendStatus(403)
 }
 
@@ -26,17 +25,17 @@ export default function JWTMiddleware(req: any, res: any, next: NextFunction) {
 
     if (token == null) return res.sendStatus(401)
 
+    jwt.verify(token, ACCESS_TOKEN_SECRET, async (err: any, result: any) => {
 
-    jwt.verify(token, ACCESS_TOKEN_SECRET, async (err: any, user: any) => {
         if (err) return cacheError(err, res)
-        user = await User.findOne({ username: user.username });
+        let user = await Admin.findOne({ _id: result.user._id });
 
         if (user) {
             req.user = user;
 
             next()
         } else {
-            return res.json({ error: 'User not exists' });
+            return res.status(400).json({ error: 'User not exists' });
         }
     })
 }

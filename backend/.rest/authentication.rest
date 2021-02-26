@@ -1,5 +1,5 @@
 
-POST {{host}}/register
+POST {{host}}/login
 Content-Type: application/json
 
 {
@@ -8,13 +8,15 @@ Content-Type: application/json
 }
 ####
 
-POST {{host}}/login
+
+POST {{host}}/register
 Content-Type: application/json
 
 {
     "username": "admin",
     "password": "password@"
 }
+####
 
 ####
 

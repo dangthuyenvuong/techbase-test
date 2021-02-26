@@ -1,32 +1,33 @@
 @collection=department
 
-###
+### Get all
 GET {{host}}/{{collection}}
 
-###
+### GET 1
 GET {{host}}/{{collection}}/6037e06cdad2ba45a4d20cf1
-###
 
+
+
+### Create
 
 POST {{host}}/{{collection}}
 Content-Type: application/json
 Authorization: Bearer {{accessToken}}
 
 {
-    "name": "phong hành chính",
-    "manager": "6037cb7598ce504e8cc73b2c"
+    "name": "phong hành chính"
 }
 
-###
-PUT {{host}}/{{collection}}/6037d14688aae114cc6a7062
+### Update
+PUT {{host}}/{{collection}}/60387b50e243114a2c90daec
 Content-Type: application/json
-Authorization: Bearer {{accessToken}}
+Authorization: Bearer {{tokenForever}}
 
 {
-    "people": ["6037c5e8c441ca397c2f8837"]
+    "name": "Phòng nhân sự"
 }
 
 
-###
-DELETE {{host}}/{{collection}}/6037e05adad2ba45a4d20cef
+### Delete
+DELETE {{host}}/{{collection}}/6038b8b20c9f5550587d2d33
 Authorization: Bearer {{accessToken}}

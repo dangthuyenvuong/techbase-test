@@ -7,14 +7,7 @@ const DeparmentSchema: Schema = new Schema({
     manager: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
     },
-    people: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    ]
 }, {
     timestamps: true
 })

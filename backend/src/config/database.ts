@@ -2,18 +2,39 @@ import dotenv from 'dotenv'
 import { ConnectOptions } from 'mongoose'
 dotenv.config()
 
+let MONGO_USERNAME
+let MONGO_PASSWORD
+let MONGO_HOST
+let SERVER_HOSTNAME
+let SERVER_PORT
+let DATABASE_NAME
+
+if (process.env.ENVIRONMENT === 'prod') {
+
+    MONGO_USERNAME = process.env.MONGO_USERNAME || 'root'
+    MONGO_PASSWORD = process.env.MONGO_PASSWORD || ''
+    MONGO_HOST = process.env.MONGO_URL || 'localhost'
 
 
-const MONGO_USERNAME = process.env.MONGO_USERNAME || 'root'
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD || ''
-const MONGO_HOST = process.env.MONGO_URL || 'localhost'
+
+    SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'localhost'
+    SERVER_PORT = process.env.SERVER_PORT || 27017
+    DATABASE_NAME = process.env.MONGO_DATABASE || 'test'
 
 
 
-const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || 'localhost'
-const SERVER_PORT = process.env.SERVER_PORT || 27017
-const DATABASE_NAME = process.env.MONGO_DATABASE || 'test'
 
+} else {
+    MONGO_USERNAME = process.env.MONGO_USERNAME_TEST || 'root'
+    MONGO_PASSWORD = process.env.MONGO_PASSWORD_TEST || ''
+    MONGO_HOST = process.env.MONGO_URL_TEST || 'localhost'
+
+
+
+    SERVER_HOSTNAME = process.env.SERVER_HOSTNAME_TEST || 'localhost'
+    SERVER_PORT = process.env.SERVER_PORT_TEST || 27017
+    DATABASE_NAME = process.env.MONGO_DATABASE_TEST || 'test'
+}
 
 const MONGO_OPTIONS: ConnectOptions = {
     useUnifiedTopology: true,
