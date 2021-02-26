@@ -7,7 +7,7 @@ const TeamSchema: Schema = new Schema({
     manager: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        // required: true
     },
     department: {
         type: Schema.Types.ObjectId,

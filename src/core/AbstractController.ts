@@ -70,20 +70,6 @@ export default abstract class AbstractController {
                     }
                 })
             })
-
-        // exec.exec()
-        //     .then(result => {
-        //         return res.status(200).json({
-        //             data: result,
-        //             count: result.length
-        //         })
-        //     })
-        //     .catch(error => {
-        //         return res.status(500).json({
-        //             message: error.message,
-        //             error
-        //         })
-        //     })
     }
     post = (req: Request, res: Response, next: NextFunction) => {
         const data = new this.model({

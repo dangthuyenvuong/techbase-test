@@ -10,34 +10,32 @@ import config from '../src/config/database'
 import app from '../src/app'
 
 
-const tokenForever = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJUeXBlIjoiZ3Vlc3QiLCJfaWQiOiI2MDM4Yjg5YTBjOWY1NTUwNTg3ZDJkMzAiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIzMjFmMzlkNmE2OWFkNjg1MzQ0MTdkNDIwNWI3ZjUyYyIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMjZUMDk6MDA6MTAuNjEzWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMjZUMDk6MDA6MTAuNjEzWiIsIl9fdiI6MCwiaWQiOiI2MDM4Yjg5YTBjOWY1NTUwNTg3ZDJkMzAifSwiaWF0IjoxNjE0MzMwMjY1LCJleHAiOjE2MTQzMzM4NjV9.gQaJDs01R2Lh2QxOlofPoB9NkdkgB1XuoOEBpXCAOKc";
+const tokenForever = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJUeXBlIjoiZ3Vlc3QiLCJfaWQiOiI2MDM4YzBiNmQ3MGNhMTU2NjRkZjNlZTUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiIzMjFmMzlkNmE2OWFkNjg1MzQ0MTdkNDIwNWI3ZjUyYyIsImNyZWF0ZWRBdCI6IjIwMjEtMDItMjZUMDk6MzQ6NDYuMjkwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDItMjZUMDk6MzQ6NDYuMjkwWiIsIl9fdiI6MCwiaWQiOiI2MDM4YzBiNmQ3MGNhMTU2NjRkZjNlZTUifSwiaWF0IjoxNjE0MzM2Mzg0LCJleHAiOjE2MTc5MzYzODR9.ETkhDF8lnXIw0aFapKP57sRPjwKdpW0dDPikwqSSAnQ";
 
 // Assertion Style
 chai.should()
 
 chai.use(chaiHttp)
-
-function connect() {
-    return new Promise((resolve, reject) => {
-
-        mongoose.connect(config.mongo.url, { useNewUrlParser: true, useCreateIndex: true })
-            .then((_res, err) => {
-                if (err) return reject(err);
-                resolve();
-            })
-
-    })
-}
-
 function close() {
     return mongoose.disconnect();
 }
 
+function connect(done) {
+    setTimeout(() => {
+        console.log(mongoose.connection.readyState)
+        if (mongoose.connection.readyState === 1)
+            done();
+        else
+            connect(done)
+    }, 1000)
+}
+
 describe('Tasks API', () => {
     before((done) => {
-        connect()
-            .then(() => done())
-            .catch((err) => done(err));
+        mongoose.connect(config.mongo.url, config.mongo.options)
+            .then(res => {
+                done()
+            })
     })
 
     after((done) => {
@@ -93,7 +91,6 @@ describe('Tasks API', () => {
                 .send(user)
                 .end((err, res) => {
                     res.should.have.status(200)
-                    res.body.should.have.nested.property('data.nModified', 0)
                     done()
                 })
 

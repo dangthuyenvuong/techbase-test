@@ -1,7 +1,7 @@
 @collection=user
 
 
-######### 
+######### get All
 GET {{host}}/{{collection}}
 
 ######### Get multi with query params
@@ -19,11 +19,8 @@ Content-Type: application/json
 Authorization: Bearer {{accessToken}}
 
 {
-    "lastName": "Vuong",
-    "firstName": "Dang",
-    "team": "6037c5e2c441ca397c2f8835",
-    "userType": "staff",
-    "department": "6038b4c03816df448889bfa9"
+    "lastName": "Nguyễn Văn",
+    "firstName": "Giám Đốc",
 }
 
 ###

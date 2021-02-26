@@ -1,6 +1,9 @@
 import { NextFunction, Response } from "express"
 import jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import Admin from '../models/admin'
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 const TOKEN_EXPIRED = process.env.TOKEN_EXPIRED || '3600'
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET || 'refreshToken'
@@ -20,8 +23,15 @@ function cacheError(err: any, res: Response) {
 
 
 export default function JWTMiddleware(req: any, res: any, next: NextFunction) {
+
+    if (process.env.ENVIRONMENT === 'test') {
+        next()
+    }
+
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
+
+
 
     if (token == null) return res.sendStatus(401)
 

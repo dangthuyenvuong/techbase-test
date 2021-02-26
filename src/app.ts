@@ -7,7 +7,6 @@ import logger from 'morgan'
 import mongoose, { mongo } from 'mongoose'
 import config from './config/database'
 import logging from './config/logging'
-// require('./config/database')
 
 
 var app = express();
@@ -39,6 +38,7 @@ app.use('/user', require('./routes/user'));
 app.use('/team', require('./routes/team'));
 app.use('/department', require('./routes/department'));
 app.use('/', require('./routes/admin'));
+app.use('/mockup', require('./routes/mockup'));
 
 // catch 404 and forward to error handler
 app.use(function (req: any, res: any, next: any) {

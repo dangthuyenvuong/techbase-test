@@ -5,6 +5,4 @@ export interface IUser extends Document {
     firstName: string,
     department: Types.ObjectId,
     userType: string,
-    username: string,
-    password: string
 }

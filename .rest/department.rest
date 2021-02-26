@@ -19,7 +19,7 @@ Authorization: Bearer {{accessToken}}
 }
 
 ### Update
-PUT {{host}}/{{collection}}/60387b50e243114a2c90daec
+PUT {{host}}/{{collection}}/6038c109d70ca15664df3ee8
 Content-Type: application/json
 Authorization: Bearer {{tokenForever}}
 
